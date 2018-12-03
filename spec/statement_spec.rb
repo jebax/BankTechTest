@@ -10,13 +10,7 @@ describe Statement do
   before do
     allow(Time).to receive(:now).and_return time
   end
-
-  it 'has the correct headers and divider' do
-    class_headers = %w[date credit debit balance]
-    expect(described_class::HEADERS).to eq class_headers
-    expect(described_class::DIVIDER).to eq ' || '
-  end
-
+  
   it 'only shows statement headers when no transactions are completed' do
     expect { subject.display }.to output(headers + "\n").to_stdout
   end

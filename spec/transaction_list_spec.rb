@@ -4,7 +4,7 @@ describe TransactionList do
   let(:transaction_class) { double(:transaction_class) }
   subject { TransactionList.new(transaction_class) }
 
-  it 'has a list of transactions' do
+  it 'can return a list of transactions' do
     expect(subject.transactions).to eq []
   end
 
