@@ -8,14 +8,14 @@ describe BankAccount do
 
   describe '#deposit' do
     it 'calls correct method with deposit data on its transaction list' do
-      expect(transaction_list).to receive(:add_transaction).with(deposit: 1000.0, withdrawal: nil, balance: 1000.0)
+      expect(transaction_list).to receive(:add_transaction).with(deposit: 1000.0, balance: 1000.0)
       subject.deposit(1000)
     end
   end
 
   describe '#withdraw' do
     it 'calls correct method with withdrawal data on its transaction list' do
-      expect(transaction_list).to receive(:add_transaction).with(deposit: nil, withdrawal: 1000.0, balance: -1000.0)
+      expect(transaction_list).to receive(:add_transaction).with(withdrawal: 1000.0, balance: -1000.0)
       subject.withdraw(1000)
     end
   end

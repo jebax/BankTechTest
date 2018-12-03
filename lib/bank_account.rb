@@ -9,14 +9,14 @@ class BankAccount
   def deposit(amount)
     @balance += amount
     @transaction_list.add_transaction(
-      deposit: amount.to_f, withdrawal: nil, balance: @balance.to_f
+      deposit: amount.to_f, balance: @balance.to_f
     )
   end
 
   def withdraw(amount)
     @balance -= amount
     @transaction_list.add_transaction(
-      deposit: nil, withdrawal: amount.to_f, balance: @balance.to_f
+      withdrawal: amount.to_f, balance: @balance.to_f
     )
   end
 

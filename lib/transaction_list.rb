@@ -8,7 +8,7 @@ class TransactionList
     @transactions.dup
   end
 
-  def add_transaction(deposit:, withdrawal:, balance:)
+  def add_transaction(deposit: nil, withdrawal: nil, balance:)
     @transactions << @transaction_class.new(
       deposit: deposit, withdrawal: withdrawal, balance: balance
     )
