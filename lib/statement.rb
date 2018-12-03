@@ -20,11 +20,11 @@ class Statement
   end
 
   def format_data(transaction)
-    transaction.data.map do |data|
-      if data.is_a? Time
-        data.strftime('%d/%m/%Y')
-      elsif data.is_a? Float
-        format('%.2f', data)
+    transaction.data.map do |item|
+      if item.is_a? Time
+        item.strftime('%d/%m/%Y')
+      elsif item.is_a? Float
+        format('%.2f', item)
       end
     end
   end
