@@ -23,7 +23,7 @@ describe Statement do
   it 'displays a correctly formatted statement for one deposit' do
     deposit = double(:transaction, data: [time, 1000.0, nil, 1000.0])
     deposit_line = "#{formatted_time} || 1000.00 || || " \
-    "1000.00"
+    '1000.00'
 
     transaction_list.transactions << deposit
     statement = described_class.new(transaction_list)
@@ -34,7 +34,7 @@ describe Statement do
   it 'displays a correctly formatted statement for deposit then withdrawal' do
     withdrawal = double(:transaction, data: [time, nil, 1000.0, 1000.0])
     withdrawal_line = "#{formatted_time} || || 1000.00 || " \
-    "1000.00"
+    '1000.00'
 
     transaction_list.transactions << withdrawal
     statement = described_class.new(transaction_list)
