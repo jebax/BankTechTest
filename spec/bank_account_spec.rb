@@ -41,7 +41,8 @@ describe BankAccount do
     end
 
     it 'shows a withdraw transaction on a statement with the correct time' do
-      deposit, withdrawal = 1000, 500
+      deposit = 1000
+      withdrawal = 500
       deposit_line = "#{@format_time} || || #{deposit}.00 || #{deposit}.00"
       withdraw_line = "#{@format_time} || #{withdrawal}.00 || || 500.00"
 
