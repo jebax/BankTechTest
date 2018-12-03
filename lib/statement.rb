@@ -1,7 +1,7 @@
 class Statement
   HEADERS = 'date || credit || debit || balance'.freeze
 
-  def initialize(transaction_list)
+  def initialize(transaction_list = TransactionList.new)
     @transaction_list = transaction_list
   end
 
