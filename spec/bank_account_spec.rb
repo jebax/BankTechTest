@@ -1,7 +1,6 @@
 require 'bank_account'
 
 describe BankAccount do
-
   context 'account with a positive balance' do
     before(:each) do
       subject.deposit(1000)
@@ -21,7 +20,7 @@ describe BankAccount do
   describe '#view_statement' do
     let(:headers) { 'date || credit || debit || balance' }
     let(:time) { Time.now }
-    let(:format_time) { time.strftime('%d/%m/%Y')}
+    let(:format_time) { time.strftime('%d/%m/%Y') }
 
     before do
       allow(Time).to receive(:now).and_return(time)
