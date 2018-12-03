@@ -1,5 +1,5 @@
 class TransactionList
-  def initialize(transaction_class)
+  def initialize(transaction_class = Transaction)
     @transaction_class = transaction_class
     @transactions = []
   end
