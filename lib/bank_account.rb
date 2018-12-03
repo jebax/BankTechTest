@@ -21,12 +21,6 @@ class BankAccount
   end
 
   def view_statement
-    statement.display
-  end
-
-  private
-
-  def statement
-    @statement_class.new(@transaction_list)
+    @statement_class.new(@transaction_list).display
   end
 end
