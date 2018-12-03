@@ -18,7 +18,7 @@ describe Statement do
   end
 
   it 'only shows statement headers when no transactions are completed' do
-    expect(subject.display).to eq headers + "\n"
+    expect { subject.display }.to output(headers + "\n").to_stdout
   end
 
   it 'displays a correctly formatted statement for one deposit' do
@@ -28,8 +28,9 @@ describe Statement do
 
     transaction_list.transactions << deposit
     statement = described_class.new(transaction_list)
+    results = "#{headers}\n#{deposit_line}\n"
 
-    expect(statement.display).to eq "#{headers}\n#{deposit_line}"
+    expect { statement.display }.to output(results).to_stdout
   end
 
   it 'displays a correctly formatted statement for deposit then withdrawal' do
@@ -39,7 +40,8 @@ describe Statement do
 
     transaction_list.transactions << withdrawal
     statement = described_class.new(transaction_list)
+    results = "#{headers}\n#{withdrawal_line}\n"
 
-    expect(statement.display).to eq "#{headers}\n#{withdrawal_line}"
+    expect { statement.display }.to output(results).to_stdout
   end
 end

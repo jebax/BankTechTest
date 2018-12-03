@@ -7,7 +7,8 @@ class Statement
   end
 
   def display
-    HEADERS.join(DIVIDER) + "\n" + format_transaction_list.join("\n")
+    puts HEADERS.join(DIVIDER)
+    puts format_transaction_list
   end
 
   private

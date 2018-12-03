@@ -40,14 +40,12 @@ $ irb
 2.2.3 :008 > account.withdraw(500)
  => [#<Transaction:0x007fbf630ae798 @time=2018-12-03 16:19:22 +0000, @deposit=1000.0, @withdrawal=nil, @balance=1000.0>, #<Transaction:0x007fbf630a5800 @time=2018-12-03 16:19:25 +0000, @deposit=2000.0, @withdrawal=nil, @balance=3000.0>, #<Transaction:0x007fbf6400b740 @time=2018-12-03 16:19:29 +0000, @deposit=nil, @withdrawal=500.0, @balance=2500.0>]
 
-# Statement can be viewed in a raw format, or with `puts` for nicer formatting (but no return value)
+# Statement is viewed - formats the statement as per the requirements
 2.2.3 :009 > account.view_statement
- => "date || credit || debit || balance\n03/12/2018 || 1000.00 || || 1000.00\n03/12/2018 || 2000.00 || || 3000.00\n03/12/2018 || || 500.00 || 2500.00"
-2.2.3 :010 > puts account.view_statement
 date || credit || debit || balance
 03/12/2018 || 1000.00 || || 1000.00
 03/12/2018 || 2000.00 || || 3000.00
 03/12/2018 || || 500.00 || 2500.00
  => nil
-2.2.3 :011 > exit
+2.2.3 :010 > exit
 ```
