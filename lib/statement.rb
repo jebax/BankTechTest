@@ -5,6 +5,12 @@ class Statement
     @transaction_list = transaction_list
   end
 
+  def add_transaction(deposit:, withdrawal:, balance:)
+    @transaction_list.add_transaction(
+      deposit: deposit, withdrawal: withdrawal, balance: balance
+    )
+  end
+
   def display
     HEADERS + "\n" + format_transaction_list.join("\n")
   end
