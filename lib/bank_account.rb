@@ -1,22 +1,21 @@
 class BankAccount
-  HEADERS = 'date || credit || debit || balance'.freeze
-
-  attr_reader :balance
-
   def initialize(statement = Statement.new)
-    @balance = 0.0
-    @transactions = []
+    @balance = 0
     @statement = statement
   end
 
   def deposit(amount)
     @balance += amount
-    @transactions << [Time.now, nil, amount.to_f, @balance]
+    @statement.add_transaction(
+      deposit: amount.to_f, withdrawal: nil, balance: @balance.to_f
+    )
   end
 
   def withdraw(amount)
     @balance -= amount
-    @transactions << [Time.now, amount.to_f, nil, @balance]
+    @statement.add_transaction(
+      deposit: nil, withdrawal: amount.to_f, balance: @balance.to_f
+    )
   end
 
   def view_statement

@@ -4,19 +4,17 @@ describe BankAccount do
   let(:statement) { double(:statement) }
   subject { BankAccount.new(statement) }
 
-  context 'account with a positive balance' do
-    before(:each) do
+  describe '#deposit' do
+    it 'calls correct method with deposit data on its statement' do
+      expect(statement).to receive(:add_transaction).with(deposit: 1000.0, withdrawal: nil, balance: 1000.0)
       subject.deposit(1000)
     end
+  end
 
-    it 'shows the correct balance' do
-      expect(subject.balance).to eq 1000
-    end
-
-    it 'can withdraw to decrease balance' do
-      withdrawal = 500
-      subject.withdraw(withdrawal)
-      expect(subject.balance).to eq 1000 - withdrawal
+  describe '#withdraw' do
+    it 'calls correct method with withdrawal data on its statement' do
+      expect(statement).to receive(:add_transaction).with(deposit: nil, withdrawal: 1000.0, balance: -1000.0)
+      subject.withdraw(1000)
     end
   end
 
