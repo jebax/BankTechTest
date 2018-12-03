@@ -23,4 +23,16 @@ feature 'using a bank account' do
 
     expect { account.view_statement }.to output(statement).to_stdout
   end
+
+  scenario 'withdraws 45, adds 1.23, adds 123.65, then views statement' do
+    statement = "date || credit || debit || balance\n#{formatted_time} || " \
+    "|| 45.00 || -45.00\n#{formatted_time} || 1.23 || || -43.77\n" \
+    "#{formatted_time} || 123.65 || || 79.88\n"
+
+    account.withdraw(45)
+    account.deposit(1.23)
+    account.deposit(123.65)
+
+    expect { account.view_statement }.to output(statement).to_stdout
+  end
 end
