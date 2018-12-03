@@ -10,7 +10,7 @@ describe Statement do
   before do
     allow(Time).to receive(:now).and_return time
   end
-  
+
   it 'only shows statement headers when no transactions are completed' do
     expect { subject.display }.to output(headers + "\n").to_stdout
   end
