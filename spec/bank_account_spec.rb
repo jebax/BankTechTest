@@ -1,6 +1,9 @@
 require 'bank_account'
 
 describe BankAccount do
+  let(:statement) { double(:statement) }
+  subject { BankAccount.new(statement) }
+
   context 'account with a positive balance' do
     before(:each) do
       subject.deposit(1000)
@@ -18,38 +21,9 @@ describe BankAccount do
   end
 
   describe '#view_statement' do
-    let(:headers) { 'date || credit || debit || balance' }
-    let(:time) { Time.now }
-    let(:format_time) { time.strftime('%d/%m/%Y') }
-
-    before do
-      allow(Time).to receive(:now).and_return(time)
-    end
-
-    it 'shows an empty statement when no transactions are made' do
-      expect(subject.view_statement).to eq headers + "\n"
-    end
-
-    it 'shows a deposit transaction on a statement with the correct time' do
-      amount = 1000
-      statement =
-        "#{headers}\n#{format_time} || || #{amount}.00 || #{amount}.00"
-
-      subject.deposit(amount)
-      expect(subject.view_statement).to eq statement
-    end
-
-    it 'shows a withdraw transaction on a statement with the correct time' do
-      deposit = 1000
-      withdrawal = 500
-      deposit_line = "#{format_time} || || #{deposit}.00 || #{deposit}.00"
-      withdraw_line = "#{format_time} || #{withdrawal}.00 || || 500.00"
-
-      subject.deposit(deposit)
-      subject.withdraw(withdrawal)
-
-      result = "#{headers}\n#{deposit_line}\n#{withdraw_line}"
-      expect(subject.view_statement).to eq result
+    it 'calls correct method on its statement' do
+      expect(statement).to receive(:display)
+      subject.view_statement
     end
   end
 end

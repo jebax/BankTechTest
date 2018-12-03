@@ -3,9 +3,10 @@ class BankAccount
 
   attr_reader :balance
 
-  def initialize
+  def initialize(statement = Statement.new)
     @balance = 0.0
     @transactions = []
+    @statement = statement
   end
 
   def deposit(amount)
@@ -19,22 +20,6 @@ class BankAccount
   end
 
   def view_statement
-    HEADERS + "\n" +
-      @transactions.map { |transaction| format_transaction(transaction) }
-                   .join("\n")
-  end
-
-  private
-
-  def format_transaction(transaction)
-    formatted = transaction.map do |section|
-      if section.is_a? Float
-        format('%.2f', section)
-      elsif section.is_a? Time
-        section.strftime('%d/%m/%Y')
-      end
-    end
-
-    formatted.join(' || ').sub('  ', ' ')
+    @statement.display
   end
 end
