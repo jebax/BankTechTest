@@ -1,5 +1,6 @@
 class Statement
-  HEADERS = 'date || credit || debit || balance'.freeze
+  HEADERS = %w[date credit debit balance].freeze
+  DIVIDER = ' || '.freeze
 
   def initialize(transaction_list = TransactionList.new)
     @transaction_list = transaction_list
@@ -12,14 +13,14 @@ class Statement
   end
 
   def display
-    HEADERS + "\n" + format_transaction_list.join("\n")
+    HEADERS.join(DIVIDER) + "\n" + format_transaction_list.join("\n")
   end
 
   private
 
   def format_transaction_list
     @transaction_list.transactions.map do |transaction|
-      format_data(transaction).join(' || ').sub('  ', ' ')
+      format_data(transaction).join(DIVIDER).sub('  ', ' ')
     end
   end
 

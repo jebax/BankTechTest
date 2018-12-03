@@ -11,6 +11,12 @@ describe Statement do
     allow(Time).to receive(:now).and_return time
   end
 
+  it 'has the correct headers and divider' do
+    class_headers = ['date', 'credit', 'debit', 'balance']
+    expect(described_class::HEADERS).to eq class_headers
+    expect(described_class::DIVIDER).to eq ' || '
+  end
+
   it 'can add a deposit to its transaction list' do
     expect(transaction_list).to receive(:add_transaction).with(deposit: 1000, withdrawal: nil, balance: 1000)
     subject.add_transaction(deposit: 1000, withdrawal: nil, balance: 1000)
