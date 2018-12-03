@@ -33,7 +33,8 @@ describe BankAccount do
 
     it 'shows a deposit transaction on a statement with the correct time' do
       amount = 1000
-      statement = "#{@headers}\n#{@format_time} || || #{amount}.00 || #{amount}.00"
+      statement =
+        "#{@headers}\n#{@format_time} || || #{amount}.00 || #{amount}.00"
 
       subject.deposit(amount)
       expect(subject.view_statement).to eq statement

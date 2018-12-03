@@ -1,14 +1,12 @@
 class BankAccount
-  HEADERS = "date || credit || debit || balance"
+  HEADERS = 'date || credit || debit || balance'.freeze
 
   def initialize
     @balance = 0.0
     @transactions = []
   end
 
-  def balance
-    @balance
-  end
+  attr_reader :balance
 
   def deposit(amount)
     @balance += amount
@@ -20,15 +18,18 @@ class BankAccount
   end
 
   def view_statement
-    "#{HEADERS}\n#{@transactions.map { |transaction| format_transaction(transaction) }.join("\n")}"
+    HEADERS +
+      "\n" +
+      @transactions.map { |transaction| format_transaction(transaction) }
+                   .join("\n")
   end
 
   private
 
   def format_transaction(transaction)
-   formatted = transaction.map do |section|
+    formatted = transaction.map do |section|
       if section.is_a? Float
-        sprintf('%.2f', section)
+        format('%.2f', section)
       elsif section.is_a? Time
         section.strftime('%d/%m/%Y')
       end
