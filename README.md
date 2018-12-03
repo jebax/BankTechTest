@@ -2,7 +2,7 @@
 
 This is my attempt at the Bank tech test, in which I strived to achieve the highest-quality code possible, using a test-driven, OO approach. I used Ruby and RSpec to complete this challenge.
 
-## My approach
+## My approach
 
 I decided to use Ruby for this tech test as I wanted to concentrate on my OOD skills. Using Ruby facilitates and encourages clean, readable code, and the use of fully encapsulated and isolated objects. I used [rubocop](https://github.com/rubocop-hq/rubocop) and [flog](https://github.com/seattlerb/flog) for linting my code and inspecting its complexity metrics, respectively. My code passes rubocop, and flogging returns an average method score of 3.4, and an average class score of 12.7.
 
