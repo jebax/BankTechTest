@@ -2,7 +2,6 @@ class BankAccount
   def initialize(transaction_list = TransactionList.new,
                  statement_class = Statement)
     @balance = 0
-    @statement = nil
     @statement_class = statement_class
     @transaction_list = transaction_list
   end
@@ -28,6 +27,6 @@ class BankAccount
   private
 
   def statement
-    @statement ||= @statement_class.new(@transaction_list)
+    @statement_class.new(@transaction_list)
   end
 end

@@ -2,14 +2,8 @@ class Statement
   HEADERS = %w[date credit debit balance].freeze
   DIVIDER = ' || '.freeze
 
-  def initialize(transaction_list = TransactionList.new)
+  def initialize(transaction_list)
     @transaction_list = transaction_list
-  end
-
-  def add_transaction(deposit:, withdrawal:, balance:)
-    @transaction_list.add_transaction(
-      deposit: deposit, withdrawal: withdrawal, balance: balance
-    )
   end
 
   def display
