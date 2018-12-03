@@ -1,12 +1,12 @@
 class BankAccount
   HEADERS = 'date || credit || debit || balance'.freeze
 
+  attr_reader :balance
+
   def initialize
     @balance = 0.0
     @transactions = []
   end
-
-  attr_reader :balance
 
   def deposit(amount)
     @balance += amount
