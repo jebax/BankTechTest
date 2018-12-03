@@ -39,5 +39,17 @@ describe BankAccount do
       subject.deposit(amount)
       expect(subject.view_statement).to eq statement
     end
+
+    it 'shows a withdraw transaction on a statement with the correct time' do
+      deposit, withdrawal = 1000, 500
+      deposit_line = "#{@format_time} || || #{deposit}.00 || #{deposit}.00"
+      withdraw_line = "#{@format_time} || #{withdrawal}.00 || || 500.00"
+
+      subject.deposit(deposit)
+      subject.withdraw(withdrawal)
+
+      result = "#{@headers}\n#{deposit_line}\n#{withdraw_line}"
+      expect(subject.view_statement).to eq result
+    end
   end
 end

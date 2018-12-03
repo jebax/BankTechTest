@@ -15,11 +15,11 @@ class BankAccount
 
   def withdraw(amount)
     @balance -= amount
+    @transactions << [Time.now, amount.to_f, nil, @balance]
   end
 
   def view_statement
-    HEADERS +
-      "\n" +
+    HEADERS + "\n" +
       @transactions.map { |transaction| format_transaction(transaction) }
                    .join("\n")
   end
