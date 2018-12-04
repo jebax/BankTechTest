@@ -10,6 +10,6 @@ describe TransactionList do
 
   it 'can create a new transaction object' do
     expect(transaction_class).to receive(:new).with(deposit: 1000, withdrawal: nil, balance: 1000)
-    subject.add_transaction(deposit: 1000, withdrawal: nil, balance: 1000)
+    subject.add_transaction(deposit: 1000, balance: 1000)
   end
 end
